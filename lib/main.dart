@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/screens/welcome_screen.dart';
 import 'package:quiz_app/widgets/questions_answers.dart';
 
 void main() {
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: QuestionsAnswers(),
+      home: const WelcomeScreen(),
     );
   }
 }
