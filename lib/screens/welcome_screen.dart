@@ -7,17 +7,16 @@ class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
       body: SafeArea(
         child: Center(
           child: Column(
             children: [
-              const Padding(
-                padding: EdgeInsets.only(top: 70),
+              Padding(
+                padding: const EdgeInsets.only(top: 70),
                 child: Text(
                   'Quiz Game',
-                  style: TextStyle(
-                    fontSize: 100,
-                  ),
+                  style: Theme.of(context).textTheme.headline1,
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -32,13 +31,13 @@ class WelcomeScreen extends StatelessWidget {
                       ),
                     );
                   },
-                  child: const Text('Click to Start'),
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.purple,
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 50, vertical: 20),
-                    textStyle: const TextStyle(
-                        fontSize: 30, fontWeight: FontWeight.bold),
+                  child: Text(
+                    'Click to Start',
+                    style: Theme.of(context).textTheme.headline4!.merge(
+                          TextStyle(
+                            color: Theme.of(context).primaryColor,
+                          ),
+                        ),
                   ),
                 ),
               ),

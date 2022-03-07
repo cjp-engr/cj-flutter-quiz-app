@@ -1,9 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:quiz_app/screens/score_screen.dart';
-//import 'package:google_fonts/google_fonts.dart';
 import '../widgets/options.dart';
-//import 'package:trivia_app/scorepage.dart';
 
 typedef OptionSelectedCallback = void Function(String option);
 
@@ -33,17 +31,10 @@ class _QuestionsAnswersScreenState extends State<QuestionsAnswersScreen> {
     for (int i = 0; i < widget.results.length; i++) {
       correctanswerlist.add(widget.results.elementAt(i).correct_answer);
     }
-
-    // for(int i =0; i < widget.results.length; i++) {
-    //   _userAnswerList.add("");
-    // }
   }
 
   @override
   Widget build(BuildContext context) {
-    //final TextStyle subtitle = Theme.of(context).textTheme.subtitle1!;
-    //final TextStyle body = Theme.of(context).textTheme.bodyText1!;
-
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -75,16 +66,36 @@ class _QuestionsAnswersScreenState extends State<QuestionsAnswersScreen> {
                         ),
                         Text(
                           'Question ${index + 1}',
-                          // style: GoogleFonts.oswald(
-                          //     textStyle: subtitle, color: Colors.yellow[800]),
+                          style: Theme.of(context).textTheme.headline4!.merge(
+                                TextStyle(
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                              ),
                         ),
                         const SizedBox(
                           height: 15,
                         ),
                         Text(
-                          '${widget.results.elementAt(index).question}',
-                          //   style:
-                          //       GoogleFonts.lato(textStyle: body, fontSize: 20),
+                          (() {
+                            String question = widget.results
+                                .elementAt(index)
+                                .question
+                                .toString();
+                            if (question.contains("&quot;") ||
+                                question.contains("&#039;") ||
+                                question.contains("&amp;")) {
+                              return question
+                                  .replaceAll(r"&quot;", "'")
+                                  .replaceAll(r"&#039;", "'")
+                                  .replaceAll(r"&amp;", "&");
+                            }
+                            return question;
+                          })(),
+                          style: Theme.of(context).textTheme.subtitle1!.merge(
+                                TextStyle(
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                              ),
                         ),
                         const SizedBox(
                           height: 20,
@@ -118,10 +129,7 @@ class _QuestionsAnswersScreenState extends State<QuestionsAnswersScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      TextButton(
-                        style: ElevatedButton.styleFrom(
-                          padding: const EdgeInsets.all(20),
-                        ),
+                      ElevatedButton(
                         onPressed: () {
                           _controller.animateToPage(
                             currentPagePosition == 0
@@ -131,15 +139,12 @@ class _QuestionsAnswersScreenState extends State<QuestionsAnswersScreen> {
                             curve: Curves.easeIn,
                           );
                         },
-                        child: const Text(
-                          'Previous',
+                        child: Icon(
+                          Icons.skip_previous,
+                          color: Theme.of(context).primaryColor,
                         ),
                       ),
                       ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          padding: const EdgeInsets.all(15),
-                          primary: Colors.yellow[800],
-                        ),
                         onPressed: () {
                           _controller.animateToPage(
                               currentPagePosition == widget.results.length - 1
@@ -148,8 +153,9 @@ class _QuestionsAnswersScreenState extends State<QuestionsAnswersScreen> {
                               duration: const Duration(milliseconds: 100),
                               curve: Curves.easeIn);
                         },
-                        child: const Text(
-                          'Next',
+                        child: Icon(
+                          Icons.skip_next,
+                          color: Theme.of(context).primaryColor,
                         ),
                       ),
                     ],
@@ -160,7 +166,7 @@ class _QuestionsAnswersScreenState extends State<QuestionsAnswersScreen> {
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         padding: const EdgeInsets.all(10),
-                        primary: Colors.blueGrey[800],
+                        //primary: Theme.of(context).primaryColor,
                         fixedSize:
                             Size(MediaQuery.of(context).size.width * 0.7, 50)),
                     onPressed: () {
@@ -174,8 +180,13 @@ class _QuestionsAnswersScreenState extends State<QuestionsAnswersScreen> {
                           ),
                           (route) => false);
                     },
-                    child: const Text(
+                    child: Text(
                       'SUBMIT',
+                      style: Theme.of(context).textTheme.headline3!.merge(
+                            TextStyle(
+                              color: Theme.of(context).primaryColor,
+                            ),
+                          ),
                     ),
                   ),
                 ],

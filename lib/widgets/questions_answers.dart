@@ -24,11 +24,12 @@ class _QuestionsAnswersState extends State<QuestionsAnswers> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
         elevation: 0.0,
         backgroundColor: Colors.transparent,
         centerTitle: true,
-        title: const Text('Trivia questions'),
+        //title: const Text('Trivia questions'),
       ),
       body: _futureWidget(),
     );

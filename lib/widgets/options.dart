@@ -26,7 +26,6 @@ class _OptionsState extends State<Options> {
   void initState() {
     super.initState();
     selectedIndex = widget.selectedPosition;
-    //print("positio here is $selectedIndex");
   }
 
   @override
@@ -44,7 +43,11 @@ class _OptionsState extends State<Options> {
               selectedTileColor: Colors.blueGrey[800],
               selected: selectedIndex == position,
               title: Text(
-                  '${widget.wrongRightList[widget.index].elementAt(position)}'),
+                '${widget.wrongRightList[widget.index].elementAt(position)}',
+                style: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                ),
+              ),
               value: selectedIndex == position,
               onChanged: (bool? newValue) {
                 widget.onOptionsSelected(

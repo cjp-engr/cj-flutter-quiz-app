@@ -26,8 +26,8 @@ class _ScoreScreenState extends State<ScoreScreen> {
         count++;
       }
     }
-    count *= 10;
-    total = widget.correctanswerlist.length * 10;
+    count += 1;
+    total = widget.correctanswerlist.length;
   }
 
   @override
@@ -37,9 +37,8 @@ class _ScoreScreenState extends State<ScoreScreen> {
 
   @override
   Widget build(BuildContext context) {
-    //final TextStyle body = Theme.of(context).textTheme.bodyText1!;
-
     return Scaffold(
+        backgroundColor: Theme.of(context).backgroundColor,
         appBar: AppBar(
           elevation: 0.0,
           backgroundColor: Colors.transparent,
@@ -64,16 +63,20 @@ class _ScoreScreenState extends State<ScoreScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const Center(
+                  Center(
                     child: Text(
                       "Score",
-                      //style: GoogleFonts.lato(textStyle: body, fontSize: 30),
+                      style: TextStyle(
+                        color: Theme.of(context).primaryColor,
+                      ),
                     ),
                   ),
                   Center(
                     child: Text(
                       '$count / $total',
-                      //style: GoogleFonts.lato(textStyle: body, fontSize: 28),
+                      style: TextStyle(
+                        color: Theme.of(context).primaryColor,
+                      ),
                     ),
                   ),
                 ],
@@ -98,8 +101,13 @@ class _ScoreScreenState extends State<ScoreScreen> {
                       ),
                     );
                   },
-                  child: const Text(
+                  child: Text(
                     'Retake Test',
+                    style: Theme.of(context).textTheme.headline3!.merge(
+                          TextStyle(
+                            color: Theme.of(context).primaryColor,
+                          ),
+                        ),
                   ),
                 ),
               ),

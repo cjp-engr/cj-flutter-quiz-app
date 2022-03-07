@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 class ApiQuestionAnswer {
   Future<List<Results>?> getStates() async {
     Uri url = Uri.parse(
-        "https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple");
+        "https://opentdb.com/api.php?amount=100&difficulty=easy&type=multiple");
 
     var response = await http.get(url);
     if (response.statusCode == 200) {
@@ -17,7 +17,6 @@ class ApiQuestionAnswer {
       try {
         List<Results> results =
             (statesJsonArray as List).map((e) => Results.fromJson(e)).toList();
-
         return results;
       } catch (e) {
         log('try failed $e');
