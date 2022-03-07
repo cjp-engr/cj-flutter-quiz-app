@@ -35,6 +35,7 @@ class _QuestionsAnswersScreenState extends State<QuestionsAnswersScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var buttonForeGroundColor = Theme.of(context).primaryColor;
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -68,7 +69,7 @@ class _QuestionsAnswersScreenState extends State<QuestionsAnswersScreen> {
                           'Question ${index + 1}',
                           style: Theme.of(context).textTheme.headline4!.merge(
                                 TextStyle(
-                                  color: Theme.of(context).primaryColor,
+                                  color: buttonForeGroundColor,
                                 ),
                               ),
                         ),
@@ -93,7 +94,7 @@ class _QuestionsAnswersScreenState extends State<QuestionsAnswersScreen> {
                           })(),
                           style: Theme.of(context).textTheme.subtitle1!.merge(
                                 TextStyle(
-                                  color: Theme.of(context).primaryColor,
+                                  color: buttonForeGroundColor,
                                 ),
                               ),
                         ),
@@ -141,7 +142,7 @@ class _QuestionsAnswersScreenState extends State<QuestionsAnswersScreen> {
                         },
                         child: Icon(
                           Icons.skip_previous,
-                          color: Theme.of(context).primaryColor,
+                          color: buttonForeGroundColor,
                         ),
                       ),
                       ElevatedButton(
@@ -155,7 +156,7 @@ class _QuestionsAnswersScreenState extends State<QuestionsAnswersScreen> {
                         },
                         child: Icon(
                           Icons.skip_next,
-                          color: Theme.of(context).primaryColor,
+                          color: buttonForeGroundColor,
                         ),
                       ),
                     ],
@@ -166,7 +167,6 @@ class _QuestionsAnswersScreenState extends State<QuestionsAnswersScreen> {
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         padding: const EdgeInsets.all(10),
-                        //primary: Theme.of(context).primaryColor,
                         fixedSize:
                             Size(MediaQuery.of(context).size.width * 0.7, 50)),
                     onPressed: () {
@@ -184,7 +184,7 @@ class _QuestionsAnswersScreenState extends State<QuestionsAnswersScreen> {
                       'SUBMIT',
                       style: Theme.of(context).textTheme.headline3!.merge(
                             TextStyle(
-                              color: Theme.of(context).primaryColor,
+                              color: buttonForeGroundColor,
                             ),
                           ),
                     ),

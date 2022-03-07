@@ -6,6 +6,7 @@ class WelcomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var buttonForeGroundColor = Theme.of(context).primaryColor;
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       body: SafeArea(
@@ -35,7 +36,7 @@ class WelcomeScreen extends StatelessWidget {
                     'Click to Start',
                     style: Theme.of(context).textTheme.headline4!.merge(
                           TextStyle(
-                            color: Theme.of(context).primaryColor,
+                            color: buttonForeGroundColor,
                           ),
                         ),
                   ),
